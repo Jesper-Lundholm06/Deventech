@@ -10,7 +10,7 @@ export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="fixed bottom-4 right-4 z-[60] max-w-[calc(100vw-2rem)] rounded-lg border border-line bg-card px-3 py-2.5 shadow-lg shadow-navy/10">
+    <div className="fixed bottom-4 left-4 z-[60] max-w-[calc(100vw-2rem)] rounded-lg border border-line bg-card px-3 py-2.5 shadow-lg shadow-navy/10">
       <p className="text-[10px] font-semibold uppercase tracking-widest text-slate">
         Preview design
       </p>
