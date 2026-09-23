@@ -21,7 +21,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-white">
+    <header className="sticky top-0 z-50 border-b border-line bg-card">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <NavLink
           to="/"
@@ -65,7 +65,7 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-line bg-white px-4 py-3 md:hidden">
+        <nav className="border-t border-line bg-card px-4 py-3 md:hidden">
           <ul className="flex flex-col gap-1">
             {navItems.map((item) => (
               <li key={item.to}>

@@ -39,7 +39,7 @@ function EngineeringRender({ src, alt, caption }: RenderProps) {
   }
 
   return (
-    <figure className="overflow-hidden rounded-lg border border-line bg-white">
+    <figure className="overflow-hidden rounded-lg border border-line bg-card">
       <div className="flex h-48 items-center justify-center p-5 sm:h-56 sm:p-6">
         <img
           src={src}
@@ -135,7 +135,7 @@ export default function CustomProducts() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy"
+            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink"
           >
             Contact us
           </Link>

@@ -7,13 +7,70 @@
   --color-brand-light: #e8f1fb;
   --color-surface: #f5f7fa;
   --color-line: #e2e8f0;
+  --color-card: #ffffff;
+  --color-page: #ffffff;
+  --color-ink: #0b2545;
 
   --font-sans: "Inter Variable", system-ui, sans-serif;
   --font-display: "Space Grotesk Variable", sans-serif;
 }
 
+/* Theme: Light Precision (default) — current site values, unchanged */
+:root,
+:root[data-theme="light"] {
+  --color-navy: #0b2545;
+  --color-slate: #5a6b82;
+  --color-brand: #0f6fd4;
+  --color-brand-light: #e8f1fb;
+  --color-surface: #f5f7fa;
+  --color-line: #e2e8f0;
+  --color-card: #ffffff;
+  --color-page: #ffffff;
+  --color-ink: #0b2545;
+
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-display: "Space Grotesk Variable", sans-serif;
+}
+
+/* Theme: Dark Tech */
+:root[data-theme="dark"] {
+  --color-navy: #e7ecf3;
+  --color-slate: #93a1b5;
+  --color-brand: #2e8bf0;
+  --color-brand-light: #0e2740;
+  --color-surface: #161e2b;
+  --color-line: #26303f;
+  --color-card: #1a2333;
+  --color-page: #0e1520;
+  --color-ink: #0a1928;
+
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-display: "Space Grotesk Variable", sans-serif;
+}
+
+/* Theme: Heritage */
+:root[data-theme="heritage"] {
+  --color-navy: #1e2a32;
+  --color-slate: #6e6a62;
+  --color-brand: #2a5a78;
+  --color-brand-light: #e3ecf1;
+  --color-surface: #efeae1;
+  --color-line: #e4ddd1;
+  --color-card: #fffdf9;
+  --color-page: #f7f4ef;
+  --color-ink: #1e2a32;
+
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-display: "Fraunces Variable", serif;
+}
+
+html {
+  background-color: var(--color-page);
+}
+
 body {
   font-family: var(--font-sans);
+  background-color: var(--color-page);
   color: var(--color-navy);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

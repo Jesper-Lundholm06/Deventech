@@ -41,7 +41,7 @@ export default function Contact() {
         {people.map((person) => (
           <div
             key={person.name}
-            className="rounded-lg border border-line bg-white p-6"
+            className="rounded-lg border border-line bg-card p-6"
           >
             <p className="font-display text-lg font-semibold text-navy">
               {person.name}

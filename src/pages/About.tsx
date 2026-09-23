@@ -163,7 +163,7 @@ export default function About() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy"
+            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink"
           >
             Contact us
           </Link>

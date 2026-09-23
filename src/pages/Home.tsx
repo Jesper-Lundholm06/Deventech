@@ -2,6 +2,12 @@ import { Link } from "react-router-dom";
 import { products } from "../data/products";
 import type { Product } from "../types/product";
 import ProductCard from "../components/ProductCard";
+import { useTheme } from "../context/ThemeContext";
+
+const HERO_EYEBROW = "Welcome to Deventech AB";
+const HERO_HEADING = "Saw blade manufacturing solutions";
+const HERO_SUBLINE =
+  "Precision machines for the whole production chain — plus custom-made manufacturing solutions.";
 
 interface ProcessStep {
   number: string;
@@ -43,7 +49,7 @@ const featuredProducts = featuredSlugs
   .filter((product): product is Product => Boolean(product));
 
 const primaryButtonClass =
-  "inline-flex items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy";
+  "inline-flex items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink";
 const secondaryButtonClass =
   "inline-flex items-center justify-center gap-2 rounded-md border border-line px-6 py-3 text-sm font-semibold text-navy transition-colors hover:border-brand hover:text-brand";
 
@@ -57,52 +63,270 @@ function MontagePanel({ src, alt, className }: { src: string; alt: string; class
   );
 }
 
-export default function Home() {
+function HeroCopy({ headingClassName }: { headingClassName: string }) {
   return (
-    <div>
-      {/* Hero */}
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand">
-              Welcome to Deventech AB
-            </p>
-            <h1 className="mt-3 font-display text-4xl font-bold leading-tight text-navy sm:text-5xl">
-              Saw blade manufacturing solutions
-            </h1>
-            <p className="mt-4 max-w-md leading-relaxed text-slate">
-              Precision machines for the whole production chain — plus
-              custom-made manufacturing solutions.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link to="/products" className={primaryButtonClass}>
-                View products
-              </Link>
-              <Link to="/contact" className={secondaryButtonClass}>
-                Contact us
-              </Link>
-            </div>
-          </div>
+    <>
+      <p className="text-xs font-semibold uppercase tracking-widest text-brand">
+        {HERO_EYEBROW}
+      </p>
+      <h1 className={headingClassName}>{HERO_HEADING}</h1>
+      <p className="mt-4 max-w-md leading-relaxed text-slate">{HERO_SUBLINE}</p>
+      <div className="mt-8 flex flex-wrap gap-4">
+        <Link to="/products" className={primaryButtonClass}>
+          View products
+        </Link>
+        <Link to="/contact" className={secondaryButtonClass}>
+          Contact us
+        </Link>
+      </div>
+    </>
+  );
+}
 
-          <div className="grid grid-cols-2 gap-4">
-            <MontagePanel
+function LightHero() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
+      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <HeroCopy headingClassName="mt-3 font-display text-4xl font-bold leading-tight text-navy sm:text-5xl" />
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <MontagePanel
+            src="/images/products/SGM-310.png"
+            alt="SGM-310 saw blade grinding machine"
+            className="row-span-2"
+          />
+          <MontagePanel
+            src="/images/products/BSM-220.png"
+            alt="BSM-220 band saw blade setting machine"
+            className="h-32 sm:h-36"
+          />
+          <MontagePanel
+            src="/images/products/DDW-100.png"
+            alt="DDW-100 diamond dress wheel"
+            className="h-32 sm:h-36"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DarkHero() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand">
+            {HERO_EYEBROW}
+          </p>
+          <div className="mt-4 h-0.5 w-14 bg-brand" />
+          <h1 className="mt-5 font-display text-5xl font-bold leading-[1.05] tracking-tight text-navy sm:text-6xl">
+            {HERO_HEADING}
+          </h1>
+          <p className="mt-5 max-w-md leading-relaxed text-slate">
+            {HERO_SUBLINE}
+          </p>
+          <div className="mt-9 flex flex-wrap gap-4">
+            <Link to="/products" className={primaryButtonClass}>
+              View products
+            </Link>
+            <Link to="/contact" className={secondaryButtonClass}>
+              Contact us
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="relative flex h-72 items-center justify-center overflow-hidden rounded-lg border border-line bg-white p-8 sm:h-96 lg:h-[440px]">
+            <span className="absolute inset-x-0 top-0 h-0.5 bg-brand" />
+            <img
               src="/images/products/SGM-310.png"
               alt="SGM-310 saw blade grinding machine"
-              className="row-span-2"
+              className="h-full w-full object-contain"
             />
-            <MontagePanel
-              src="/images/products/BSM-220.png"
-              alt="BSM-220 band saw blade setting machine"
-              className="h-32 sm:h-36"
-            />
-            <MontagePanel
-              src="/images/products/DDW-100.png"
-              alt="DDW-100 diamond dress wheel"
-              className="h-32 sm:h-36"
-            />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex h-24 items-center justify-center rounded-lg border border-line bg-white p-4 sm:h-28">
+              <img
+                src="/images/products/BSM-220.png"
+                alt="BSM-220 band saw blade setting machine"
+                className="h-full w-full object-contain"
+              />
+            </div>
+            <div className="flex h-24 items-center justify-center rounded-lg border border-line bg-white p-4 sm:h-28">
+              <img
+                src="/images/products/DDW-100.png"
+                alt="DDW-100 diamond dress wheel"
+                className="h-full w-full object-contain"
+              />
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function HeritageHero() {
+  return (
+    <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28 lg:py-32">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_260px] lg:items-end lg:gap-16">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand">
+            {HERO_EYEBROW}
+          </p>
+          <h1 className="mt-5 font-display text-5xl leading-[1.1] text-navy sm:text-6xl lg:text-7xl">
+            {HERO_HEADING}
+          </h1>
+          <p className="mt-6 max-w-lg leading-relaxed text-slate">
+            {HERO_SUBLINE}
+          </p>
+          <div className="mt-9 flex flex-wrap gap-4">
+            <Link to="/products" className={primaryButtonClass}>
+              View products
+            </Link>
+            <Link to="/contact" className={secondaryButtonClass}>
+              Contact us
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex h-48 items-center justify-center rounded-lg border border-line bg-white p-6 sm:h-56 lg:h-64">
+          <img
+            src="/images/products/BSM-220.png"
+            alt="BSM-220 band saw blade setting machine"
+            className="h-full w-full object-contain"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LightProcessSteps() {
+  return (
+    <>
+      {/* Mobile: vertical stepper */}
+      <div className="mt-10 flex flex-col md:hidden">
+        {processSteps.map((step, index) => (
+          <div key={step.number} className="flex gap-4">
+            <div className="flex flex-col items-center">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-brand bg-card font-display text-sm font-bold text-brand">
+                {step.number}
+              </div>
+              {index < processSteps.length - 1 && (
+                <div className="w-px flex-1 bg-brand/25" />
+              )}
+            </div>
+            <div className={index < processSteps.length - 1 ? "pb-8" : ""}>
+              <p className="font-display text-base font-semibold text-navy">
+                {step.name}
+              </p>
+              <p className="mt-1 text-sm text-slate">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: horizontal stepper */}
+      <div className="mt-10 hidden md:grid md:grid-cols-5 md:gap-6">
+        {processSteps.map((step, index) => (
+          <div key={step.number}>
+            <div className="flex items-center">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-brand bg-card font-display text-sm font-bold text-brand">
+                {step.number}
+              </div>
+              {index < processSteps.length - 1 && (
+                <div className="ml-2 h-px flex-1 bg-brand/25" />
+              )}
+            </div>
+            <p className="mt-4 font-display text-base font-semibold text-navy">
+              {step.name}
+            </p>
+            <p className="mt-1 text-sm text-slate">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function DarkProcessSteps() {
+  return (
+    <>
+      {/* Mobile: compact vertical stepper, squared nodes */}
+      <div className="mt-8 flex flex-col md:hidden">
+        {processSteps.map((step, index) => (
+          <div key={step.number} className="flex gap-3">
+            <div className="flex flex-col items-center">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border border-brand bg-card font-display text-xs font-bold text-brand">
+                {step.number}
+              </div>
+              {index < processSteps.length - 1 && (
+                <div className="w-px flex-1 bg-brand/40" />
+              )}
+            </div>
+            <div className={index < processSteps.length - 1 ? "pb-6" : ""}>
+              <p className="text-xs font-semibold uppercase tracking-wide text-navy">
+                {step.name}
+              </p>
+              <p className="mt-1 text-sm text-slate">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: tight technical band, continuous connecting line */}
+      <div className="relative mt-8 hidden md:grid md:grid-cols-5 md:gap-4">
+        <div className="absolute inset-x-0 top-4 h-px bg-brand/40" />
+        {processSteps.map((step) => (
+          <div key={step.number} className="relative">
+            <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-sm border border-brand bg-card font-display text-xs font-bold text-brand">
+              {step.number}
+            </div>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-navy">
+              {step.name}
+            </p>
+            <p className="mt-1 text-sm text-slate">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function HeritageProcessSteps() {
+  return (
+    <div className="mt-10 max-w-xl space-y-10 border-l-2 border-brand/25 pl-8">
+      {processSteps.map((step) => (
+        <div key={step.number} className="relative">
+          <span className="absolute -left-[41px] top-1 h-3.5 w-3.5 rounded-full border-2 border-surface bg-brand" />
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate">
+            {step.number}
+          </p>
+          <p className="mt-1 font-display text-xl text-navy">{step.name}</p>
+          <p className="mt-1 leading-relaxed text-slate">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function Home() {
+  const { theme } = useTheme();
+
+  return (
+    <div>
+      {/* Hero */}
+      {theme === "dark" ? (
+        <DarkHero />
+      ) : theme === "heritage" ? (
+        <HeritageHero />
+      ) : (
+        <LightHero />
+      )}
 
       {/* Production process */}
       <div className="border-y border-line bg-surface">
@@ -114,47 +338,13 @@ export default function Home() {
             Our machines cover the whole saw blade production chain.
           </p>
 
-          {/* Mobile: vertical stepper */}
-          <div className="mt-10 flex flex-col md:hidden">
-            {processSteps.map((step, index) => (
-              <div key={step.number} className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-brand bg-white font-display text-sm font-bold text-brand">
-                    {step.number}
-                  </div>
-                  {index < processSteps.length - 1 && (
-                    <div className="w-px flex-1 bg-brand/25" />
-                  )}
-                </div>
-                <div className={index < processSteps.length - 1 ? "pb-8" : ""}>
-                  <p className="font-display text-base font-semibold text-navy">
-                    {step.name}
-                  </p>
-                  <p className="mt-1 text-sm text-slate">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop: horizontal stepper */}
-          <div className="mt-10 hidden md:grid md:grid-cols-5 md:gap-6">
-            {processSteps.map((step, index) => (
-              <div key={step.number}>
-                <div className="flex items-center">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-brand bg-white font-display text-sm font-bold text-brand">
-                    {step.number}
-                  </div>
-                  {index < processSteps.length - 1 && (
-                    <div className="ml-2 h-px flex-1 bg-brand/25" />
-                  )}
-                </div>
-                <p className="mt-4 font-display text-base font-semibold text-navy">
-                  {step.name}
-                </p>
-                <p className="mt-1 text-sm text-slate">{step.description}</p>
-              </div>
-            ))}
-          </div>
+          {theme === "dark" ? (
+            <DarkProcessSteps />
+          ) : theme === "heritage" ? (
+            <HeritageProcessSteps />
+          ) : (
+            <LightProcessSteps />
+          )}
 
           <div className="mt-10">
             <Link
@@ -223,7 +413,7 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy"
+            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink"
           >
             Contact us
           </Link>
